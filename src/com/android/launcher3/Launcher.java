@@ -976,6 +976,9 @@ public class Launcher extends StatefulActivity<LauncherState> implements Launche
         } else {
             mOverlayManager.onActivityStopped(this);
         }
+        if (mQuickSpace != null) {
+            mQuickSpace.onPause();
+        }
         hideKeyboard();
         logStopAndResume(false /* isResume */);
         mAppWidgetHost.setActivityStarted(false);
@@ -1067,6 +1070,9 @@ public class Launcher extends StatefulActivity<LauncherState> implements Launche
             mOverlayManager.onActivityResumed(this);
         } else {
             mOverlayManager.onActivityPaused(this);
+        }
+       if (mQuickSpace != null) {
+            mQuickSpace.onPause();
         }
         if (!isStarted()) {
             mOverlayManager.onActivityStopped(this);
